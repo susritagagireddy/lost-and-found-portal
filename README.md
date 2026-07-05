@@ -112,3 +112,17 @@ graph TD
    ```
 
 ⚠ NEVER push .env to GitHub. Your API key will be exposed publicly.
+
+## Assets
+
+### Cover Page Banner
+![Cover Page Banner](assets/cover_page_banner.png)
+
+### Agent Workflow Diagram
+![Workflow Diagram](assets/architecture_diagram.png)
+
+## Demo Script
+
+A conversational, timed spoken narration script for video demonstration is available in [DEMO_SCRIPT.txt](file:///c:/Users/subha/OneDrive/Documents/capstone%20project/lost-and-found-portal/DEMO_SCRIPT.txt).
+
+

@@ -1,0 +1,43 @@
+[0:00 — HOOK]
+Hello everyone. Have you ever lost a wallet or keys on public transit or at a busy venue, only to spend hours digging through manually maintained logs? Today, I am showing you the Lost and Found Portal, which automates this entire experience securely using multi-agent AI.
+
+(pause)
+
+[0:20 — WHAT IT IS]
+This application is an intelligent, secure lost and found registry built on the ADK 2.0 framework under the Freestyle track. It automates reporting, performs database search-matching, and implements human verification gates.
+
+(pause)
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see on the project banner, our goal is to build an automated, secure, and intelligent lost and found portal that manages registries dynamically.
+
+(pause)
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let's walk through the architecture. When a user sends a message, it enters the START node and immediately goes through our Security Checkpoint node to scan for injections and scrub personal data. If it is a safe request, it goes to the orchestrator_agent which uses AgentTools to delegate tasks to the reporter_agent or the matcher_agent. These agents query a local JSON database via our Stdio MCP Server. Finally, if the matcher agent initiates a claim, the system pauses at the claim_verification Human-in-the-Loop node to request explicit confirmation before logging the transaction.
+
+(pause)
+
+[2:00 — LIVE DEMO]
+(switch to playground at localhost:18081)
+Let's see this in action. First, I will simulate someone reporting a found item by typing: "Hi, I found a black leather wallet on the bus today. My email is finder@example.com". The security checkpoint cleans the input, routes it to the reporter_agent, and it successfully saves the item to the database using the report_item MCP tool, returning an item ID.
+
+(pause)
+
+Next, I will simulate a user trying to find their lost wallet by typing: "Hi, I lost my wallet. It's a black leather wallet, and I think I left it on the bus. My email is owner@example.com". The matcher_agent runs the search_items MCP tool, finds the matched wallet, and triggers the claim process, which pauses at the claim_verification node.
+
+(pause)
+
+The system prompts me: "System Alert: A claim is being made. Please confirm by typing 'YES' to verify this claim or 'NO' to cancel." I will type "YES", and the workflow resumes, verifying the claim and marking the item status as claimed.
+
+(pause)
+
+[3:00 — SECURITY & MCP]
+To make sure this portal is robust, our security checkpoint uses regular expressions to scrub credit cards and SSNs, checks for prompt injection attempts, and writes structured JSON logs. Meanwhile, the stdio MCP server manages a persistent database of reported items, matches details securely, and performs state updates.
+
+(pause)
+
+[3:30 — IMPACT / CLOSE]
+By automating intake, search, and claims, this portal takes the administrative burden off organizations while maintaining high security. Thank you for watching, and let me know if you have any questions!
